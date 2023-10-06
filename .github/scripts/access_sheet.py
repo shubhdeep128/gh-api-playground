@@ -20,7 +20,7 @@ def check_blocked_status(github_id):
     spreadsheet_id = os.environ['SPREADSHEET_ID']
     print(spreadsheet_id)
     spreadsheet = client.open_by_key(spreadsheet_id)
-    
+    print(spreadsheet)
     # Use the sheet ID (gid) to select the specific sheet
     sheet_id = os.environ['SHEET_ID']
     print(sheet_id)
