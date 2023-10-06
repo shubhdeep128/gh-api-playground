@@ -38,5 +38,5 @@ def check_blocked_status(github_id):
         exit(1)
 
 if __name__ == "__main__":
-    github_id = os.environ('GITHUB_ACTOR')
+    github_id = os.environ['GITHUB_ACTOR']
     check_blocked_status(github_id)

@@ -1,10 +1,6 @@
 name: Block Specific Users from Merging
 
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
+on: [push]
 
 jobs:
   block_merging:
