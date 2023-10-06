@@ -17,12 +17,12 @@ def check_blocked_status(github_id):
     client = gspread.authorize(creds)
     
     # Use the spreadsheet ID to open the spreadsheet
-    spreadsheet_id = os.environ('SPREADSHEET_ID')
+    spreadsheet_id = os.environ['SPREADSHEET_ID']
     print(spreadsheet_id)
     spreadsheet = client.open_by_key(spreadsheet_id)
     
     # Use the sheet ID (gid) to select the specific sheet
-    sheet_id = os.environ('SHEET_ID')
+    sheet_id = os.environ['SHEET_ID']
     print(sheet_id)
     sheet = [worksheet for worksheet in spreadsheet.worksheets() if worksheet.id == sheet_id][0]
     
