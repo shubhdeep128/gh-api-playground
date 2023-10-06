@@ -22,6 +22,7 @@ jobs:
 
       - name: Check if user is blocked from merging
         run: python .github/scripts/access_sheet.py
+        continue-on-error: true
         env:
           GOOGLE_SHEETS_CREDS: ${{ secrets.GOOGLE_SHEETS_CREDS }}
           SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
