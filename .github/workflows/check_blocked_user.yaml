@@ -27,3 +27,10 @@ jobs:
           SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
           SHEET_ID: ${{ secrets.SHEET_ID }}
           GITHUB_ACTOR: ${{ github.actor }}
+
+      - name: Comment on PR if blocked
+        if: steps.check_block_status.outcome == 'failure' && steps.check_block_status.outputs.exit-code == '2'
+        run: |
+          echo "User ${{ github.actor }} is blocked from merging this PR." | gh pr comment ${{ github.event.pull_request.number }} --body-file=-
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
