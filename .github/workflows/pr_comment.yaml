@@ -1,0 +1,15 @@
+name: Comment PR Author
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment PR Author
+        run: |
+          echo "Hello ${{ github.actor }}, thank you for your contribution!"
