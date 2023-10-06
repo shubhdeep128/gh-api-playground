@@ -28,6 +28,9 @@ jobs:
           SHEET_ID: ${{ secrets.SHEET_ID }}
           GITHUB_ACTOR: ${{ github.actor }}
 
+      - name: Install GitHub CLI
+        uses: cli/cli@v1
+
       - name: Comment on PR if blocked
         if: steps.check_block_status.outcome == 'failure' && steps.check_block_status.outputs.exit-code == '2'
         run: |
