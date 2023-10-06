@@ -9,8 +9,13 @@ def check_blocked_status(github_id):
     
     client = gspread.authorize(creds)
     
-    # Assuming the sheet structure is: Column A = GitHub ID, Column B = Team Name, Column C = Status (Blocked/Not Blocked)
-    sheet = client.open("MySheet").sheet1
+    # Use the spreadsheet ID to open the spreadsheet
+    spreadsheet_id = os.environ['SPREADSHEET_ID']
+    spreadsheet = client.open_by_key(spreadsheet_id)
+    
+    # Use the sheet ID (gid) to select the specific sheet
+    sheet_id = os.environ['SHEET_ID']
+    sheet = [worksheet for worksheet in spreadsheet.worksheets() if worksheet.id == sheet_id][0]
     
     # Search for the GitHub ID in the sheet
     cell = sheet.find(github_id)
